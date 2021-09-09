@@ -16,7 +16,11 @@ class PromotionControllerTest {
     void getCustomersByBirthDate() {
         String urlBase = "http://localhost:8080";
         WebClient client = WebClient.create(urlBase);
-        String response = client.get().uri("/birthdate/1999-09-13").retrieve().bodyToMono(String.class).block();
-        System.out.println(response);
+        String response = client.get()
+                .uri("/promotion/birthdate/1999-09-13/")
+                .retrieve()
+                .bodyToMono(String.class)
+                .block();
+        assertEquals("Emails sended", response);
     }
 }

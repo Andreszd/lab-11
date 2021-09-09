@@ -35,7 +35,7 @@ public class PromotionService {
     public void sendEmailOfPromotions(Date birthDate){
         //fixme: create template email
 
-        List<Customer> customers = customerService.getAllCustomersBirthDay(new Date());
+        List<Customer> customers = customerService.getAllCustomersBirthDay(birthDate);
 
         MessageEmail email = new MessageEmail("Promocion", this.promotion);
         for (Customer customer: customers) {

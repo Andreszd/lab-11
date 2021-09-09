@@ -24,11 +24,18 @@ public class PromotionController {
         this.promotionService = promotionService;
     }
 
-    @GetMapping("/birthdate/{date}")
-    public ResponseEntity<String> getCustomersByBirthDate(
+    @GetMapping("/birthdate/{date}/")
+    public ResponseEntity<String> getPromotionsToCustomersByBirthDate(
             @PathVariable("date")
             @DateTimeFormat(pattern = "yyyy-MM-dd") Date birthDate) {
         promotionService.sendEmailOfPromotions(birthDate);
+        return new ResponseEntity<>("Emails sended", HttpStatus.OK);
+    }
+
+    @GetMapping("/birthdate/")
+    public ResponseEntity<String> getPromotionsToCustomersWithBirthDateToday() {
+
+        promotionService.sendEmailOfPromotions(new Date());
         return new ResponseEntity<>("Emails sended", HttpStatus.OK);
     }
 }
