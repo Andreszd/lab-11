@@ -9,7 +9,9 @@ import java.util.Date;
 import java.util.List;
 
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
-
+/*
     @Query("select cu from Customer cu where cu.birthDay = :birthDay")
     List<Customer> findAllWithBirthDayToday(@Param("birthDay") Date birthDay);
+
+ */
 }
